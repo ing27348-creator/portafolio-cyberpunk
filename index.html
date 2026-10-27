@@ -5,48 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portafolio | Ing. Claudio Yunior</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-:root{--g:#00ff88;--g2:#00c46a;--bg:#000;--panel:#07120c;--tx:#c9ffe3;--mut:#6fae8f}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:'Courier New',ui-monospace,monospace;overflow-x:hidden}
-#matrix{position:fixed;inset:0;z-index:-1;opacity:.28}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,255,136,.035) 0 1px,transparent 1px 3px)}
-.navbar{background:rgba(0,0,0,.85);backdrop-filter:blur(6px);border-bottom:1px solid var(--g2)}
-.navbar-brand,.nav-link{color:var(--g)!important}
-.nav-link:hover{text-shadow:0 0 8px var(--g)}
-.navbar-toggler{border-color:var(--g2)}
-.navbar-toggler-icon{filter:invert(1) sepia(1) saturate(8) hue-rotate(90deg)}
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:80px}
-.glitch{font-size:clamp(2.2rem,8vw,4.5rem);font-weight:700;color:var(--g);text-shadow:0 0 12px var(--g);position:relative;line-height:1.1}
-.glitch::before,.glitch::after{content:attr(data-t);position:absolute;left:0;top:0;width:100%;overflow:hidden}
-.glitch::before{color:#00ffd5;transform:translate(2px,0);clip-path:inset(0 0 60% 0);animation:gl 3s infinite steps(1)}
-.glitch::after{color:#7dff00;transform:translate(-2px,0);clip-path:inset(60% 0 0 0);animation:gl 3s .4s infinite steps(1)}
-@keyframes gl{0%,90%{transform:translate(0)}92%{transform:translate(-3px,1px)}95%{transform:translate(3px,-1px)}}
-.cursor{border-right:3px solid var(--g);animation:bl 1s infinite}
-@keyframes bl{50%{border-color:transparent}}
-.btn-neon{color:var(--bg);background:var(--g);border:0;border-radius:0;font-weight:700;padding:.7rem 1.6rem;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);transition:box-shadow .2s}
-.btn-neon:hover{background:#5dffb0;box-shadow:0 0 22px var(--g)}
-.btn-line{color:var(--g);border:1px solid var(--g);border-radius:0;padding:.7rem 1.6rem}
-.btn-line:hover{background:rgba(0,255,136,.12);color:var(--g)}
-section{padding:5rem 0}
-h2{color:var(--g);text-shadow:0 0 10px rgba(0,255,136,.5);margin-bottom:2rem}
-h2::before{content:"> ";color:var(--g2)}
-.panel{background:var(--panel);border:1px solid rgba(0,255,136,.35);padding:1.5rem;height:100%;position:relative;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px))}
-.panel:hover{border-color:var(--g);box-shadow:inset 0 0 30px rgba(0,255,136,.08)}
-.panel h3{color:var(--g);font-size:1.2rem}
-.tag{display:inline-block;border:1px solid var(--g2);color:var(--g);padding:.1rem .6rem;margin:.2rem .2rem 0 0;font-size:.8rem}
-.muted{color:var(--mut)}
-.bar{height:8px;background:#0b2016;margin:.3rem 0 1.1rem}
-.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g2),var(--g));box-shadow:0 0 10px var(--g);transition:width 1.4s ease}
-.stat{font-size:2.4rem;color:var(--g);text-shadow:0 0 10px var(--g)}
-.avatar-wrap{width:min(300px,70vw);aspect-ratio:1;margin:auto}
-.orb{width:100%;height:100%}
-.form-control{background:#030a06;border:1px solid var(--g2);color:var(--tx);border-radius:0}
-.form-control:focus{background:#030a06;color:var(--tx);border-color:var(--g);box-shadow:0 0 10px rgba(0,255,136,.4)}
-a:focus-visible,button:focus-visible{outline:2px solid var(--g);outline-offset:3px}
-footer{border-top:1px solid var(--g2);padding:1.5rem 0;color:var(--mut)}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
+<link href="style.css" rel="stylesheet">
 </head>
 <body>
 <canvas id="matrix"></canvas>
@@ -176,25 +135,6 @@ footer{border-top:1px solid var(--g2);padding:1.5rem 0;color:var(--mut)}
 <footer class="text-center">© 2026 Ing. Claudio Yunior. Hecho con HTML, CSS, JS y Bootstrap.</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-// Lluvia de código
-const cv=document.getElementById('matrix'),cx=cv.getContext('2d');let cols,drops;
-function size(){cv.width=innerWidth;cv.height=innerHeight;cols=Math.floor(cv.width/16);drops=Array(cols).fill(1)}
-size();addEventListener('resize',size);
-setInterval(()=>{cx.fillStyle='rgba(0,0,0,.08)';cx.fillRect(0,0,cv.width,cv.height);cx.fillStyle='#00ff88';cx.font='14px monospace';
-drops.forEach((y,i)=>{cx.fillText(Math.random()<.5?'0':'1',i*16,y*16);drops[i]=y*16>cv.height&&Math.random()>.975?0:y+1})},60);
-// Texto que se escribe
-const words=['Estudiante de Ingeniería en Sistemas','Desarrollo web','Ciberseguridad'];let w=0,c=0,del=false;const t=document.getElementById('typed');
-(function type(){const s=words[w];t.textContent=s.slice(0,c);if(!del&&c++===s.length){del=true;return setTimeout(type,1400)}
-if(del&&c--===0){del=false;w=(w+1)%words.length}setTimeout(type,del?40:90)})();
-// Barras y contadores al entrar en pantalla
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);
-if(e.target.dataset.w)e.target.style.width=e.target.dataset.w+'%';
-if(e.target.dataset.n){let n=+e.target.dataset.n,i=0;const id=setInterval(()=>{e.target.textContent=++i;if(i>=n)clearInterval(id)},90)}}));
-document.querySelectorAll('[data-w],[data-n]').forEach(el=>io.observe(el));
-// Formulario
-document.getElementById('send').onclick=()=>{const m=document.getElementById('msg');
-document.getElementById('ok').textContent=m.value.trim()?'Mensaje enviado. Te responderé pronto.':'Escribe un mensaje antes de enviar.';if(m.value.trim())m.value=''};
-</script>
+<script src="script.js"></script>
 </body>
 </html>

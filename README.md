@@ -12,6 +12,12 @@ Crear un portafolio web básico, responsivo y profesional con estética cyberpun
 - **JavaScript**: lluvia de código en canvas, texto que se escribe solo, barras y contadores animados al hacer scroll, formulario de contacto.
 - **Bootstrap 5**: rejilla responsiva y barra de navegación.
 
+## Estructura del proyecto
+- `index.html`: estructura de la página.
+- `style.css`: estilos (tema verde y negro).
+- `script.js`: interactividad.
+- `README.md`: documentación del proyecto.
+
 ## Secciones
 1. Inicio: nombre con efecto glitch y gráfico SVG animado.
 2. Sobre mí: descripción y estadísticas.
